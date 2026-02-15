@@ -10,5 +10,9 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+    - name: urchin-zmk-module
+      url: https://github.com/byronclark/urchin-zmk-module.git
+      revision: main
+      path: modules/urchin-zmk-module
   self:
     path: config
