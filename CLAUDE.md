@@ -10,6 +10,7 @@ ZMK firmware configuration for a 34-key Urchin split keyboard (nice_nano_v2). Po
 - `config/urchin.conf` - ZMK Kconfig settings (mouse/pointing enabled)
 - `config/west.yml` - West manifest (ZMK v0.3 + urchin-zmk-module)
 - `build.yaml` - GitHub Actions build matrix (urchin_left, urchin_right)
+- `build.sh` - Local build script using podman
 
 ## Layout
 
@@ -60,7 +61,23 @@ BASE, NAV, NUM, SYM, FUN, MEDIA, MOUSE. Matches QMK source exactly.
 
 ## Building
 
-No local west toolchain. Push to GitHub and the Actions workflow builds firmware for both halves. Firmware .uf2 files appear as build artifacts.
+### Local (podman)
+
+`./build.sh` builds firmware inside a podman container (`zmk-build-arm:stable`). The west workspace lives in `.zmk/` (gitignored) and is auto-initialized on first run.
+
+```
+./build.sh              # build both halves
+./build.sh left         # build left half only
+./build.sh right        # build right half only
+./build.sh --update     # run west update before building
+./build.sh setup        # wipe .zmk/ workspace and rebuild from scratch
+```
+
+Output: `firmware/urchin_left.uf2`, `firmware/urchin_right.uf2`.
+
+### CI (GitHub Actions)
+
+Push to GitHub and the Actions workflow builds firmware for both halves. Firmware .uf2 files appear as build artifacts.
 
 ## Related Repositories
 
