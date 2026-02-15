@@ -1,3 +1,4 @@
 
 .zmk/
+firmware/
 /.claude/settings.local.json
