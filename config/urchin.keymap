@@ -55,7 +55,6 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
             require-prior-idle-ms = <100>;
-            hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <KEYS_R THUMBS 21 22 24>;
             bindings = <&kp>, <&kp>;
@@ -126,7 +125,6 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
             require-prior-idle-ms = <100>;
-            hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <KEYS_L THUMBS 5 25>;
             bindings = <&kp>, <&kp>;
