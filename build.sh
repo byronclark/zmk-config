@@ -72,8 +72,7 @@ build_container_script() {
 
     if $NEEDS_INIT; then
         cmds+=("west init -l ${C_ZMK}/config/")
-        cmds+=("west config manifest.group-filter -- -hal")
-        cmds+=("west config manifest.project-filter -- -lvgl,-nanopb,-zmk-studio-messages")
+        cmds+=("west config manifest.project-filter -- -nanopb,-zmk-studio-messages")
         cmds+=("west update")
     elif $UPDATE; then
         cmds+=("west update")
