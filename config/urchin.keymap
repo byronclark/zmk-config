@@ -103,6 +103,7 @@
         };
 
         // Right-hand Alt - adds browser devtools positions (J=5, K=25)
+        // hold-while-undecided omitted: speculative Alt triggers Firefox menu bar on Linux
         // Used for: I(LALT)
         hmr_alt: home_row_mod_right_alt {
             compatible = "zmk,behavior-hold-tap";
@@ -110,7 +111,6 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
-            hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <KEYS_L THUMBS 5 25>;
             bindings = <&kp>, <&kp>;

@@ -55,7 +55,9 @@ Reference for adjusting hold-tap and combo timing parameters. Each section descr
 | Modifier or layer feels laggy — there's a visible delay before the held action takes effect | Enable | Hold S for Ctrl+C, but Ctrl doesn't register until after tapping-term expires |
 | False modifier activations during fast typing rolls | Disable | Rolling through home row triggers brief phantom modifiers between keystrokes |
 
-**Current values:** Enabled on `hml`, `hmr`, `hml_ctrl`, `hmr_ctrl`, `hmr_alt`, `lt_thumb`. Omitted on `hml_gui` and `hmr_gui` because those keys use `require-prior-idle-ms` instead — combining both would make GUI too eager during typing.
+**Current values:** Enabled on `hml`, `hmr`, `hml_ctrl`, `hmr_ctrl`, `lt_thumb`. Omitted on:
+- **`hml_gui`, `hmr_gui`** — GUI pinky keys use `require-prior-idle-ms` instead; combining both would make GUI too eager during typing
+- **`hmr_alt`** — ZMK sends the speculative modifier to the host immediately (unlike QMK which buffers it internally). A brief Alt press-release during typing rolls triggers Firefox's menu bar activation on Linux/GTK
 
 ## hold-trigger-key-positions (positional hold-tap)
 
