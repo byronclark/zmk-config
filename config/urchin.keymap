@@ -33,7 +33,7 @@
 / {
     behaviors {
         // Left-hand home row mods (standard)
-        // Used for: R(ALT), T(SFT)
+        // Used for: T(SFT)
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -41,6 +41,19 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <120>;
             hold-while-undecided;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        // Left-hand Alt - hold-while-undecided omitted: speculative Alt triggers Firefox menu bar on Linux
+        // Used for: R(LALT)
+        hml_alt: home_row_mod_left_alt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <120>;
             hold-trigger-on-release;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             bindings = <&kp>, <&kp>;
@@ -217,7 +230,7 @@
             display-name = "Base";
             bindings = <
                 &kp Q            &kp W          &kp F            &kp P           &kp G              &kp J          &kp L           &kp U            &kp Y          &kp SQT
-                &hml_gui LGUI A  &hml LALT R    &hml_ctrl LCTRL S &hml LSHFT T   &kp D              &kp H          &hmr RSHFT N    &hmr_ctrl RCTRL E &hmr_alt LALT I &hmr_gui RGUI O
+                &hml_gui LGUI A  &hml_alt LALT R &hml_ctrl LCTRL S &hml LSHFT T   &kp D              &kp H          &hmr RSHFT N    &hmr_ctrl RCTRL E &hmr_alt LALT I &hmr_gui RGUI O
                 &kp Z            &kp X          &kp C            &kp V           &kp B              &kp K          &kp M           &kp COMMA        &kp DOT        &kp FSLH
                                                 &lt_thumb NAV SPACE              &lt_thumb MOUSE TAB                &lt_thumb SYM RET                &lt_thumb NUM BSPC
             >;
