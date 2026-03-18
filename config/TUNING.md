@@ -6,7 +6,7 @@ Reference for adjusting hold-tap and combo timing parameters. Each section descr
 
 **Applies to:** All hold-tap behaviors (home row mods and thumb layer-taps).
 
-**What it does:** The maximum time a key can be held before ZMK commits to a hold. Below this window, a press-release is a tap; beyond it, it's a hold. With `flavor = "balanced"`, the decision also considers whether another key was pressed during the window.
+**What it does:** The maximum time a key can be held before ZMK commits to a hold. Below this window, a press-release is a tap; beyond it, it's a hold. With `flavor = "balanced"`, the decision also considers whether another key was pressed during the window. GUI pinky keys (`hml_gui`, `hmr_gui`) use `flavor = "tap-preferred"` instead — hold requires the full tapping term regardless of other keypresses.
 
 | Symptom | Direction | Example |
 |---------|-----------|---------|
@@ -56,7 +56,7 @@ Reference for adjusting hold-tap and combo timing parameters. Each section descr
 | False modifier activations during fast typing rolls | Disable | Rolling through home row triggers brief phantom modifiers between keystrokes |
 
 **Current values:** Enabled on `hml`, `hmr`, `hml_ctrl`, `hmr_ctrl`, `lt_thumb`. Omitted on:
-- **`hml_gui`, `hmr_gui`** — GUI pinky keys use `require-prior-idle-ms` instead; combining both would make GUI too eager during typing
+- **`hml_gui`, `hmr_gui`** — GUI pinky keys use `flavor = "tap-preferred"` + `require-prior-idle-ms` instead; speculative GUI hold is destructive since the OS acts on Win/Cmd key-down immediately
 - **`hmr_alt`** — ZMK sends the speculative modifier to the host immediately (unlike QMK which buffers it internally). A brief Alt press-release during typing rolls triggers Firefox's menu bar activation on Linux/GTK
 
 ## hold-trigger-key-positions (positional hold-tap)
